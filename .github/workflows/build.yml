@@ -19,6 +19,7 @@ jobs:
           root_file: main.tex
           latexmk_shell_escape: true
           continue_on_error: true
+          args: "-pdf -file-line-error -interaction=nonstopmode"
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
