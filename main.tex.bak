@@ -101,44 +101,38 @@
   \end{tikzpicture}%
 }
 
-% Sheet-music style time signatures: use musicography's \musMeter (auto-scales
-% to line height via \resizebox, no font-state leak) raised to sit with note markings
+% Sheet-music style time signatures: larger bold stacked numbers (same genfrac
+% structure as leadsheets, but numbers scaled up to look more like score notation)
 \renewrobustcmd*\meter[2]{%
-  \smash{\raisebox{13pt}{\musMeter{#1}{#2}}}%
+  \ensuremath{%
+    \genfrac{}{}{0pt}{}%
+      {\text{\fontsize{14}{0}\selectfont\textbf{#1}}}%
+      {\text{\fontsize{14}{0}\selectfont\textbf{#2}}}%
+  }%
 }
-
-% \meterbar{top}{bot} — barline + meter indication, horizontally aligned
-\newcommand{\meterbar}[2]{\normalbar\kern-1pt\meter{#1}{#2}}
 
 % Formatting helpers
 \newcommand{\chordstrut}{\vphantom{Ag}}
-\newcommand{\startline}{\chord-{\chordstrut}}
-
-\newcommand{\muskern}{\kern-.15ex } % what MusiXTeX does
-\makeatletter
-\newcommand\dynmark[1]{{\normalfont\bfseries\itshape
-  \@tfor\next:=#1\do{\put@muskern\next}\/}}
-\newcommand{\put@muskern}{\let\put@muskern\muskern}
-\makeatother
+\newcommand{\startline}{\chord{\chordstrut}}
 
 \begin{document}
 
-\begin{song}{title={14. In taberna quando sumus}}
+\begin{song}{title={In taberna quando sumus}}
 
 \begin{verse}
 \resetmusic % Start counting from 1 for this song
-
-\startline \meterbar{4}{4} \wholerest ~ | \wholerest ~ |\\
-|\chord{\dynmark{mf}} \m I--\m n \m taberna \m qua\m nd\m o sumus,\\
+\meter{4}{4}
+\startline | \wholerest ~ | \wholerest ~ |\\
+\chord{mf} \m I--\m n \m taberna \m qua\m nd\m o sumus,\\
 \startline| \m no\m n \m cu\m ra\m mu\m s \m qui\m t \m sit humus,\\
-\startline| \chord-{\dynmark{p}} \m sed \m ad \m lud\m um properamus,\\
+\startline| \chord{p} \m sed \m ad \m lud\m um properamus,\\
 \startline| cu--i semper insudamus.\\
 \startline| Quid agatur in taberna,\\
 \startline| ubi nummus est pincerna,\\
 \startline | hoc est opus ut queratur,\\
 \startline| si quid loquar, audiatur.\\
-|\chord-{\uparrow} \chord-{\dynmark{ff}}hoc est opus ut queratur,\\
-| si quid loquar, aud\chord-{\downarrow}iatur.
+| \chord{\uparrow ff}hoc est opus ut queratur,\\
+| si quid loquar, aud\chord{\downarrow}iatur.
 \end{verse}
 
 \drawXviViii{1}{3}{18pt}{0pt}
@@ -158,11 +152,11 @@
 \startline| Sed in ludo qui morantur,\\
 \startline| ex his quidam denudantur\\
 \startline| quidam ibi vestiuntur,\\
-\startline| quidam \chord-{\emph{sax--cis}}saccis induuntur.\\
+\startline| quidam \chord{\emph{sax--cis}}saccis induuntur.\\
 \startline| Ibi nullus timet mortem\\
 \startline| sed pro Baccho mittunt sortem.\\
-| \chord-{\uparrow}Ibi nullus timet mortem\\
-\startline| sed pro Baccho mittunt \chord-{\downarrow}sortem.
+| \chord{\uparrow}Ibi nullus timet mortem\\
+\startline| sed pro Baccho mittunt \chord{\downarrow}sortem.
 \end{verse}
 
 \end{song}
@@ -176,16 +170,17 @@
 
 \begin{verse}
 \resetmusic % Start counting from 1 for this song
-\startline\meterbar{3}{2} \m Pri\m mo \m pro\m num\m ma\m ta \meterbar{4}{4} \m vi \m --\m ni, \quarterrest \halfrest | \\
+\meter{3}{2}
+\startline| \m Pri\m mo \m pro\m num\m ma\m ta | \meter{4}{4} \m vi \m --\m ni, \quarterrest \halfrest | \\
 \startline| ex hac bibunt liber | tini; \quarterrest \halfrest |\\
 \startline| \m se\m mel \m bi\m bunt \m pro \m cap\m ti\m vis,\\
 \startline| post hec bibunt ter provivis,\\
 \startline| quater pro Christianis cunctis,\\
 \startline| \m quin\m quies \m pro \m fi\m de\m li\m bus \m de\m func\m tis,\\
-\startline| sexies pro so--\meterbar{3}{2}roribus vanis, \quarterrest \quarterrest \\
-\startline\meterbar{4}{4} septies pro mi--\meterbar{3}{2}litibus sil--| vanis. \quarterrest \quarterrest \\
+\startline| sexies pro so--|\meter{3}{2}roribus vanis, \quarterrest \quarterrest \\
+\meter{4}{4} \startline | septies pro mi--|\meter{3}{2}litibus sil--| vanis. \quarterrest \quarterrest \\
 \end{verse}
-\foreach \i in {1,...,6} {\drawQuarter{\i}{12pt}}
+\foreach \i in {1,...,6} {\drawQuarter{\i}{8pt}}
 \drawXviViii{7}{9}{18pt}{4pt}
 \draweight{10}{11}{15pt}{3pt}
 \draweight{12}{13}{15pt}{3pt}
@@ -197,7 +192,8 @@
 \draweight{26}{27}{15pt}{3pt}
 
 \begin{verse}
-\startline \meterbar{4}{4} \m Oc\m ti\m es \m pro | \m fra\m tri\m bus \m per\m ver\m sis,\\
+\meter{4}{4}
+\startline | \m Oc\m ti\m es \m pro | \m fra\m tri\m bus \m per\m ver\m sis,\\
 \startline | nonies pro monachis dispersis,\\
 \startline | \textbf{de}cies pro navigantibus,\\
 \startline \textbf{un}|decies pro discordantibus,\\
@@ -208,23 +204,23 @@
 | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |
 \end{verse}
 % Octies(28) ti(29) es(30) pro(31) quarters; fra(32) tri(33) bus(34) per(35) eighths; ver(36) sis(37) quarters
-\drawQuarter{28}{12pt}
-\drawQuarter{29}{12pt}
-\drawQuarter{30}{12pt}
-\drawQuarter{31}{12pt}
+\drawQuarter{28}{8pt}
+\drawQuarter{29}{8pt}
+\drawQuarter{30}{8pt}
+\drawQuarter{31}{8pt}
 \draweight{32}{33}{15pt}{3pt}
 \draweight{34}{35}{15pt}{3pt}
-\drawQuarter{36}{12pt}
-\drawQuarter{37}{12pt}
+\drawQuarter{36}{8pt}
+\drawQuarter{37}{8pt}
 % Tam(38) pro(39) stem-down, pa(40) pa(41) stem-up, quam(42) pro(43) stem-down, re(44) ge(45) stem-up
 \drawQuarterDown{38}{15pt}
 \drawQuarterDown{39}{15pt}
-\drawQuarter{40}{12pt}
-\drawQuarter{41}{12pt}
+\drawQuarter{40}{8pt}
+\drawQuarter{41}{8pt}
 \drawQuarterDown{42}{15pt}
 \drawQuarterDown{43}{15pt}
-\drawQuarter{44}{12pt}
-\drawQuarter{45}{12pt}
+\drawQuarter{44}{8pt}
+\drawQuarter{45}{8pt}
 
 \begin{verse}
 Bibit hera, bibit herus,\\
@@ -238,7 +234,7 @@ bibit rudis, bibit magus.\\
 \end{verse}
 
 \begin{verse}
-\chord-{\uparrow}Bibit pauper et egrotus,\\
+\chord{\uparrow}Bibit pauper et egrotus,\\
 bibit exul et ignotus,\\
 bibit puer, bibit canus,\\
 bibit presul et decanus,\\
