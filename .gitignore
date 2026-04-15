@@ -1,0 +1,40 @@
+# LaTeX build artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.synctex(busy)
+*.out
+*.toc
+*.lof
+*.lot
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.idx
+*.ind
+*.ilg
+*.glo
+*.gls
+*.glg
+*.acn
+*.acr
+*.alg
+*.xdy
+*.nav
+*.snm
+*.vrb
+*.dvi
+*.ps
+
+# Output PDF (generated — not source)
+*.pdf
+
+# Editor temp files
+.DS_Store
+*~
+*.swp
+*.swo
+\#*\#
