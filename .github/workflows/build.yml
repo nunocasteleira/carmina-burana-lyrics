@@ -15,6 +15,7 @@ jobs:
 
       - name: Build PDF
         uses: xu-cheng/latex-action@v3
+        continue-on-error: true
         with:
           root_file: main.tex
           latexmk_shell_escape: true
@@ -22,8 +23,9 @@ jobs:
           args: "-pdf -file-line-error -interaction=nonstopmode"
 
       - name: Upload PDF artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: carmina-burana-lyrics
           path: main.pdf
-          if-no-files-found: error
+          if-no-files-found: warn
