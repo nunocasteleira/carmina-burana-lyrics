@@ -13,20 +13,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install TeX Live packages
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            texlive-latex-base \
-            texlive-latex-extra \
-            texlive-fonts-recommended \
-            texlive-fonts-extra \
-            texlive-science \
-            texlive-pictures \
-            latexmk
-
       - name: Build PDF
-        run: latexmk -pdf -interaction=nonstopmode -file-line-error main.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: main.tex
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v4
