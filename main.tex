@@ -1,6 +1,13 @@
 \documentclass{article}
 \usepackage[a4paper, twocolumn, margin=2cm]{geometry}
 \usepackage{leadsheets}
+% Workaround: leadsheets v0.7 uses the `height' song property internally but
+% never declares the underlying prop-list, which breaks with the TeX Live 2026
+% LaTeX3 kernel.  Declaring it here fixes the cascade of errors at \end{song}.
+\ExplSyntaxOn
+\prop_if_exist:NF \l__leadsheets_songs_height_prop
+  { \prop_new:N \l__leadsheets_songs_height_prop }
+\ExplSyntaxOff
 \usepackage{tikz}
 % leadsheets defines \meterC; undefine before musicography loads to avoid conflict
 \let\meterC\relax
@@ -137,8 +144,8 @@
 \startline| \m ub\m i \m num\m mus est pincerna,\\
 \startline| hoc est opus ut queratur,\\
 \startline| si quid loquar, audiatur.\\
-|\chord-{\uparrow} \chord-{\dynmark{ff}}hoc est opus ut queratur,\\
-| si quid loquar, aud\chord-{\downarrow}iatur.
+|\chord-{$\uparrow$} \chord-{\dynmark{ff}}hoc est opus ut queratur,\\
+| si quid loquar, aud\chord-{$\downarrow$}iatur.
 \end{verse}
 
 \drawXviViii{1}{3}{18pt}{0pt}
@@ -173,8 +180,8 @@
 \startline| quidam \chord-{\emph{sax--cis}}saccis induuntur.\\
 \startline| Ibi nullus timet mortem\\
 \startline| sed pro Baccho mittunt sortem.\\
-| \chord-{\uparrow}Ibi nullus timet mortem\\
-\startline| sed pro Baccho mittunt \chord-{\downarrow}sortem.
+| \chord-{$\uparrow$}Ibi nullus timet mortem\\
+\startline| sed pro Baccho mittunt \chord-{$\downarrow$}sortem.
 \end{verse}
 
 \end{song}
@@ -250,7 +257,7 @@ bibit rudis, bibit magus.\\
 \end{verse}
 
 \begin{verse}
-\chord-{\uparrow}Bibit pauper et egrotus,\\
+\chord-{$\uparrow$}Bibit pauper et egrotus,\\
 bibit exul et ignotus,\\
 bibit puer, bibit canus,\\
 bibit presul et decanus,\\
