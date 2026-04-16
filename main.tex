@@ -1,5 +1,6 @@
 \documentclass{article}
-\usepackage[a4paper, twocolumn, margin=2cm]{geometry}
+\usepackage[a4paper, margin=2cm]{geometry}
+\usepackage{multicol}
 \usepackage{leadsheets}
 % Workaround: leadsheets v0.7 uses the `height' song property internally but
 % never declares the underlying prop-list, which breaks with the TeX Live 2026
@@ -130,8 +131,12 @@
 
 \begin{document}
 
-% Song lyrics are naturally short lines; raggedright prevents underfull \hbox warnings.
-\setleadsheets{text-format=\raggedright}
+% Two-column song layout: title full-width, verses in two columns.
+% disable-measuring is required because multicol cannot run inside a vbox.
+\setleadsheets{
+  disable-measuring = true,
+  text-format       = {\begin{multicols}{2}\raggedright},
+}
 
 \begin{song}{title={14. In taberna quando sumus}}
 
@@ -171,7 +176,7 @@
 \draweight{35}{36}{15pt}{3pt}
 \draweight{37}{38}{15pt}{3pt}
 
-\vspace{-4.5\baselineskip}
+\columnbreak
 \begin{verse}
 \resetmusic % Start counting from 1 for this song
 | \wholerest ~ | \wholerest ~ |\\
@@ -187,6 +192,7 @@
 \startline| sed pro Baccho mittunt \chord-{$\downarrow$}sortem.
 \end{verse}
 
+\end{multicols}
 \end{song}
 
 \vfill
@@ -279,13 +285,14 @@ sic nos rodunt omnes gentes,\\
 et sic erimus egentes.\\
 Qui nos rodunt confundantur\\
 et cum iustis non scribantur.\\
-\\
+\vspace{\baselineskip}
 | Io, io | io, io (4) |\\
 | Io, io | io, io (8) |\\
 | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |
 | \quarterrest ~ io! ||
 \end{verse}
 
+\end{multicols}
 \end{song}
 
 % --- DRAWING COMMANDS (Use the numbers 1, 2, 3...) ---
