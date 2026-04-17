@@ -31,6 +31,15 @@
   \setcounter{musicmark}{0}%
 }
 
+% --- 1b. NOTATION LAYOUT CONSTANTS ---
+% Adjust these to shift all note markings globally.
+\newlength{\beamH}        \setlength{\beamH}{15pt}   % eighth-note beam height
+\newlength{\beamN}        \setlength{\beamN}{3pt}    % standard horizontal nudge for beams
+\newlength{\groupH}       \setlength{\groupH}{18pt}  % 16th+8th group beam height
+\newlength{\sixteenH}     \setlength{\sixteenH}{20pt}% sixteenth-note group beam height
+\newlength{\quarterH}     \setlength{\quarterH}{12pt}% quarter note height
+\newlength{\quarterdownH} \setlength{\quarterdownH}{15pt}% stem-down quarter note height
+
 % --- 2. THE UPDATED MACROS ---
 
 % \draweight{start_num}{end_num}{height}{x_nudge}
@@ -176,20 +185,20 @@
   | si quid loquar, aud\chord-{$\downarrow$}iatur.
 \end{verse}
 
-\drawXviViii{1}{3}{18pt}{0pt}
-\drawXviViii{4}{6}{18pt}{0pt}
-\drawXviViii{7}{9}{18pt}{0pt}
-\drawXviViii{10}{12}{18pt}{0pt}
-\drawXviViii{13}{15}{18pt}{0pt}
-\draweight{16}{17}{15pt}{3pt}
-\draweight{18}{19}{15pt}{3pt}
-\drawXviViii{20}{22}{18pt}{0pt}
-\drawXviViii{23}{25}{18pt}{0pt}
-\drawXviViii{26}{28}{18pt}{0pt}
-\drawXviViii{29}{31}{18pt}{0pt}
-\drawXviViii{32}{34}{18pt}{0pt}
-\draweight{35}{36}{15pt}{3pt}
-\draweight{37}{38}{15pt}{3pt}
+\drawXviViii{1}{3}{\groupH}{0pt}
+\drawXviViii{4}{6}{\groupH}{0pt}
+\drawXviViii{7}{9}{\groupH}{0pt}
+\drawXviViii{10}{12}{\groupH}{0pt}
+\drawXviViii{13}{15}{\groupH}{0pt}
+\draweight{16}{17}{\beamH}{\beamN}
+\draweight{18}{19}{\beamH}{\beamN}
+\drawXviViii{20}{22}{\groupH}{0pt}
+\drawXviViii{23}{25}{\groupH}{0pt}
+\drawXviViii{26}{28}{\groupH}{0pt}
+\drawXviViii{29}{31}{\groupH}{0pt}
+\drawXviViii{32}{34}{\groupH}{0pt}
+\draweight{35}{36}{\beamH}{\beamN}
+\draweight{37}{38}{\beamH}{\beamN}
 
 \begin{verse}
   \resetmusic % Start counting from 1 for this song
@@ -219,16 +228,16 @@
   \startline| sexies pro so--\meterbar{3}{2}roribus vanis, \quarterrest \quarterrest \\
   \startline\meterbar{4}{4} septies pro mi--\meterbar{3}{2}litibus sil--| vanis. \quarterrest \quarterrest \\
 \end{verse}
-\foreach \i in {1,...,6} {\drawQuarter{\i}{12pt}}
-\drawXviViii{7}{9}{18pt}{4pt}
-\draweight{10}{11}{15pt}{3pt}
-\draweight{12}{13}{15pt}{3pt}
-\draweight{14}{15}{15pt}{3pt}
-\draweight{16}{17}{15pt}{3pt}
-\draweight{18}{19}{15pt}{3pt}
-\draweight{20}{21}{15pt}{3pt}
-\drawsixteen{22}{25}{20pt}{3pt}
-\draweight{26}{27}{15pt}{3pt}
+\foreach \i in {1,...,6} {\drawQuarter{\i}{\quarterH}}
+\drawXviViii{7}{9}{\groupH}{4pt}
+\draweight{10}{11}{\beamH}{\beamN}
+\draweight{12}{13}{\beamH}{\beamN}
+\draweight{14}{15}{\beamH}{\beamN}
+\draweight{16}{17}{\beamH}{\beamN}
+\draweight{18}{19}{\beamH}{\beamN}
+\draweight{20}{21}{\beamH}{\beamN}
+\drawsixteen{22}{25}{\sixteenH}{\beamN}
+\draweight{26}{27}{\beamH}{\beamN}
 
 \begin{verse}
   \resetmusic
@@ -243,23 +252,23 @@
   \startline | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |
 \end{verse}
 % Octies(1) ti(2) es(3) pro(4) quarters; fra(5) tri(6) eighths; bus(7) per(8) eighths; ver(9) sis(10) quarters
-\drawQuarter{1}{12pt}
-\drawQuarter{2}{12pt}
-\drawQuarter{3}{12pt}
-\drawQuarter{4}{12pt}
-\draweight{5}{6}{15pt}{3pt}
-\draweight{7}{8}{15pt}{3pt}
-\drawQuarter{9}{12pt}
-\drawQuarter{10}{12pt}
+\drawQuarter{1}{\quarterH}
+\drawQuarter{2}{\quarterH}
+\drawQuarter{3}{\quarterH}
+\drawQuarter{4}{\quarterH}
+\draweight{5}{6}{\beamH}{\beamN}
+\draweight{7}{8}{\beamH}{\beamN}
+\drawQuarter{9}{\quarterH}
+\drawQuarter{10}{\quarterH}
 % Tam(11) pro(12) stem-down, pa(13) pa(14) stem-up, quam(15) pro(16) stem-down, re(17) ge(18) stem-up
-\drawQuarterDown{11}{15pt}
-\drawQuarterDown{12}{15pt}
-\drawQuarter{13}{12pt}
-\drawQuarter{14}{12pt}
-\drawQuarterDown{15}{15pt}
-\drawQuarterDown{16}{15pt}
-\drawQuarter{17}{12pt}
-\drawQuarter{18}{12pt}
+\drawQuarterDown{11}{\quarterdownH}
+\drawQuarterDown{12}{\quarterdownH}
+\drawQuarter{13}{\quarterH}
+\drawQuarter{14}{\quarterH}
+\drawQuarterDown{15}{\quarterdownH}
+\drawQuarterDown{16}{\quarterdownH}
+\drawQuarter{17}{\quarterH}
+\drawQuarter{18}{\quarterH}
 
 \newpage
 
@@ -310,13 +319,13 @@
 
 
 % 8th note beams
-%\draweight{1}{2}{15pt}{3pt}   % Over "He-llo"
-%\draweight{3}{4}{15pt}{3pt}   % Over "stan-dard"
-%\draweight{5}{6}{15pt}{3pt}   % Over "He-llo" (Verse 2)
-%\draweight{7}{8}{15pt}{3pt}   % Over "stan-dard"
-%\draweight{9}{10}{15pt}{3pt}   % Over "stan-dard"
+%\draweight{1}{2}{\beamH}{\beamN}   % Over "He-llo"
+%\draweight{3}{4}{\beamH}{\beamN}   % Over "stan-dard"
+%\draweight{5}{6}{\beamH}{\beamN}   % Over "He-llo" (Verse 2)
+%\draweight{7}{8}{\beamH}{\beamN}   % Over "stan-dard"
+%\draweight{9}{10}{\beamH}{\beamN}   % Over "stan-dard"
 
 % 16th note group (4 stems)
-%\drawsixteen{7}{10}{20pt}{3pt} % Over "Al-le-lu-ia"
+%\drawsixteen{7}{10}{\sixteenH}{\beamN} % Over "Al-le-lu-ia"
 
 \end{document}

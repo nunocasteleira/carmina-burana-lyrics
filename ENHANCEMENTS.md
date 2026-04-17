@@ -14,8 +14,8 @@
 
 ## 🎼 Musical Notation
 
-- [ ] **Define height/nudge constants** — Replace magic numbers (`18pt`, `15pt`, `3pt`) with named commands like `\beamheight`, `\beamnudge` for easier global tuning.
-- [ ] **Fix `\drawQuarterDown`** — Currently uses `\rotatebox{180}` which flips the whole glyph. Replace with a proper stem-down quarter note symbol.
+- [x] **Define height/nudge constants** — Named lengths `\beamH`, `\beamN`, `\groupH`, `\sixteenH`, `\quarterH`, `\quarterdownH` defined; all draw calls updated.
+- [x] **Fix `\drawQuarterDown`** — `\rotatebox{180}` confirmed correct: it mirrors horizontally, placing the stem on the left of the notehead as per standard notation.
 - [ ] **`io, io` ending has no note markings** (lines 279–282) — Clarify if intentional; add markings or a comment.
 
 ---
