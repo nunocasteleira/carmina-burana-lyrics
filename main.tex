@@ -121,6 +121,11 @@
 % \meterbar{top}{bot} — barline + meter indication, horizontally aligned
 \newcommand{\meterbar}[2]{\normalbar\kern-1pt\meter{#1}{#2}}
 
+% \finalbar — music final barline: thin rule + thick rule
+\newcommand{\finalbar}{%
+  \mbox{\kern2pt\vrule width0.5pt height1.5ex depth0.4ex\kern1.5pt\vrule width2.5pt height1.5ex depth0.4ex\kern2pt}%
+}
+
 % Formatting helpers
 \newcommand{\chordstrut}{\vphantom{Ag}}
 \newcommand{\startline}{\chord-{\chordstrut}}
@@ -283,8 +288,8 @@
   \vspace{\baselineskip}
   | Io, io | io, io (4) |\\
   | Io, io | io, io (8) |\\
-  | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |
-  | \quarterrest ~ io! ||
+  | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |\\
+  | \quarterrest ~ io! \finalbar
 \end{verse}
 
 \end{multicols}
