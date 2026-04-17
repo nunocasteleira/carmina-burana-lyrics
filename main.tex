@@ -3,6 +3,7 @@
 \usepackage[latin]{babel}   % Latin hyphenation patterns
 \usepackage{ebgaramond}     % EB Garamond — period-appropriate serif font
 \usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
 \usepackage{multicol}
 \usepackage{leadsheets}
 % Workaround: leadsheets v0.7 uses the `height' song property internally but
@@ -138,8 +139,16 @@
 \makeatother
 
 \begin{document}
-\pagestyle{plain}
-
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+% Also redefine plain (used by leadsheets on song pages) to match
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[R]{\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
 % Two-column song layout: title full-width, verses in two columns.
 % disable-measuring is required because multicol cannot run inside a vbox.
 \setleadsheets{
