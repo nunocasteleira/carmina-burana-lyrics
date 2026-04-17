@@ -8,7 +8,7 @@
 
 ## 🐛 Likely Bug
 
-- [ ] **Verse 4 missing `\resetmusic`** — Markers 28–45 intentionally continue verse 3's namespace, but this is undocumented and fragile. Add an explanatory comment (or restructure).
+- [x] **Verse 4 missing `\resetmusic`** — Added `\resetmusic` before verse 4 and renumbered all draw-command markers from 28–45 → 1–18.
 
 ---
 
@@ -22,17 +22,17 @@
 
 ## 📝 Typography & Layout
 
-- [ ] **Add `\usepackage[latin]{babel}`** for correct Latin hyphenation.
-- [ ] **Use a period-appropriate serif font** (e.g. `EB Garamond` via `fontspec`).
-- [ ] **Add page numbers** via `\pagestyle{plain}`.
-- [ ] **Review `\vfill`** between verses 2 and 3 — may cause inconsistent spacing across recompiles.
+- [x] **Add `\usepackage[latin]{babel}`** for correct Latin hyphenation.
+- [x] **Use a period-appropriate serif font** — Added `ebgaramond` + `fontenc`.
+- [x] **Add page numbers** — `\pagestyle{plain}` added after `\begin{document}`.
+- [x] **Review `\vfill`** — Replaced with `\vspace{\baselineskip}` for consistent spacing.
 
 ---
 
 ## 🧹 Code Quality
 
 - [ ] **Remove or archive commented-out drawing commands** at lines 291–299 (development leftovers).
-- [ ] **Add explanatory comment** for verse 4's intentional marker continuation.
+- [x] **Add explanatory comment** for verse 4's intentional marker continuation — fixed by adding `\resetmusic` instead.
 - [ ] **Consider `\markword{syl-la-ble}` helper** to pair `\m` markers with text more consistently and reduce scattered `\m` calls.
 
 ---

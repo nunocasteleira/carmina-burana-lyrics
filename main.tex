@@ -1,5 +1,8 @@
 \documentclass{article}
 \usepackage[a4paper, margin=2cm]{geometry}
+\usepackage[latin]{babel}   % Latin hyphenation patterns
+\usepackage{ebgaramond}     % EB Garamond — period-appropriate serif font
+\usepackage[T1]{fontenc}
 \usepackage{multicol}
 \usepackage{leadsheets}
 % Workaround: leadsheets v0.7 uses the `height' song property internally but
@@ -130,6 +133,7 @@
 \makeatother
 
 \begin{document}
+\pagestyle{plain}
 
 % Two-column song layout: title full-width, verses in two columns.
 % disable-measuring is required because multicol cannot run inside a vbox.
@@ -211,6 +215,7 @@
 \draweight{26}{27}{15pt}{3pt}
 
 \begin{verse}
+  \resetmusic
   \startline \meterbar{4}{4} \m Oc\m ti\m es \m pro | \m fra\m tri\m bus \m per\m ver\m sis,\\
   \startline | nonies pro monachis dispersis,\\
   \startline | \textbf{de}cies pro navigantibus,\\
@@ -221,24 +226,24 @@
   \startline | bibunt omnes | sine lege. | \wholerest ~ | \wholerest ~ |\\
   \startline | \wholerest ~ | \wholerest ~ | \wholerest ~ | \wholerest ~ |
 \end{verse}
-% Octies(28) ti(29) es(30) pro(31) quarters; fra(32) tri(33) bus(34) per(35) eighths; ver(36) sis(37) quarters
-\drawQuarter{28}{12pt}
-\drawQuarter{29}{12pt}
-\drawQuarter{30}{12pt}
-\drawQuarter{31}{12pt}
-\draweight{32}{33}{15pt}{3pt}
-\draweight{34}{35}{15pt}{3pt}
-\drawQuarter{36}{12pt}
-\drawQuarter{37}{12pt}
-% Tam(38) pro(39) stem-down, pa(40) pa(41) stem-up, quam(42) pro(43) stem-down, re(44) ge(45) stem-up
-\drawQuarterDown{38}{15pt}
-\drawQuarterDown{39}{15pt}
-\drawQuarter{40}{12pt}
-\drawQuarter{41}{12pt}
-\drawQuarterDown{42}{15pt}
-\drawQuarterDown{43}{15pt}
-\drawQuarter{44}{12pt}
-\drawQuarter{45}{12pt}
+% Octies(1) ti(2) es(3) pro(4) quarters; fra(5) tri(6) eighths; bus(7) per(8) eighths; ver(9) sis(10) quarters
+\drawQuarter{1}{12pt}
+\drawQuarter{2}{12pt}
+\drawQuarter{3}{12pt}
+\drawQuarter{4}{12pt}
+\draweight{5}{6}{15pt}{3pt}
+\draweight{7}{8}{15pt}{3pt}
+\drawQuarter{9}{12pt}
+\drawQuarter{10}{12pt}
+% Tam(11) pro(12) stem-down, pa(13) pa(14) stem-up, quam(15) pro(16) stem-down, re(17) ge(18) stem-up
+\drawQuarterDown{11}{15pt}
+\drawQuarterDown{12}{15pt}
+\drawQuarter{13}{12pt}
+\drawQuarter{14}{12pt}
+\drawQuarterDown{15}{15pt}
+\drawQuarterDown{16}{15pt}
+\drawQuarter{17}{12pt}
+\drawQuarter{18}{12pt}
 
 \newpage
 
