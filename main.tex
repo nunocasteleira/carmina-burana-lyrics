@@ -138,17 +138,19 @@
 \newcommand{\put@muskern}{\let\put@muskern\muskern}
 \makeatother
 
-\begin{document}
-\pagestyle{fancy}
+% Right-aligned page numbers via fancyhdr; redefine plain too so
+% leadsheets song pages (which call \thispagestyle{plain}) match.
 \fancyhf{}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
-% Also redefine plain (used by leadsheets on song pages) to match
 \fancypagestyle{plain}{%
   \fancyhf{}%
   \fancyfoot[R]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
 }
+\pagestyle{fancy}
+
+\begin{document}
 % Two-column song layout: title full-width, verses in two columns.
 % disable-measuring is required because multicol cannot run inside a vbox.
 \setleadsheets{
