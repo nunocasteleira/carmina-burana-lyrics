@@ -151,13 +151,21 @@
 
 % --- 4. PAGE STYLE ---
 
-% Right-aligned page numbers via fancyhdr; redefine plain too so
-% leadsheets song pages (which call \thispagestyle{plain}) match.
+% Work-level metadata — shared across every movement in this document.
+% Override with \renewcommand in main.tex if reusing this package elsewhere.
+\newcommand{\cbWorkTitle}{Carmina Burana}
+\newcommand{\cbComposer}{Carl Orff}
+\newcommand{\cbCompDate}{1935--36}
+
+% Header: work info (left) + page number (right); no rule.
+% Redefine plain too so leadsheets song pages match.
 \fancyhf{}
+\fancyhead[L]{\small\itshape\cbWorkTitle\enspace\textendash\enspace\cbComposer\ (\cbCompDate)}
 \fancyfoot[R]{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \fancypagestyle{plain}{%
   \fancyhf{}%
+  \fancyhead[L]{\small\itshape\cbWorkTitle\enspace\textendash\enspace\cbComposer\ (\cbCompDate)}%
   \fancyfoot[R]{\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
 }

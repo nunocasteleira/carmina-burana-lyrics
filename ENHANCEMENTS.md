@@ -40,7 +40,7 @@
 ## ✨ Content
 
 - [ ] **Add English translation toggle** — use `\newif\iftranslation` so translations can be shown/hidden.
-- [ ] **Add composer metadata** (Carl Orff, 1935–36) to the song header or document preamble.
+- [x] **Add composer metadata** — `\cbWorkTitle`, `\cbComposer`, `\cbCompDate` defined once in `carmina-macros.sty`; displayed in the fancyhdr left header on every page. Per-song files carry only their own movement title.
 
 ---
 
