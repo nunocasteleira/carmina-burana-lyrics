@@ -1,6 +1,23 @@
-# Carmina Burana — In taberna quando sumus
+# Carmina Burana — Leadsheets
 
-A typeset leadsheet for *In taberna quando sumus* from Carmina Burana, with automatic musical notation beams drawn via TikZ.
+A collection of typeset leadsheets from Carmina Burana, with automatic musical notation beams drawn via TikZ.
+
+## Repository layout
+
+```
+carmina-macros.sty      Shared LaTeX package: all packages, macros, and page style
+main.tex                Top-level document: loads the package, configures leadsheets,
+                        and \input's each song file
+songs/
+  14-in-taberna.tex     "In taberna quando sumus"
+```
+
+### Adding a new song
+
+1. Create `songs/<number>-<slug>.tex` containing a single `\begin{song}...\end{song}` block.
+2. Add `\input{songs/<number>-<slug>}` to `main.tex`.
+
+No changes to `carmina-macros.sty` or the build recipe are needed.
 
 ## Requirements
 
@@ -9,7 +26,9 @@ A typeset leadsheet for *In taberna quando sumus* from Carmina Burana, with auto
   - `tikz` (with `tikzmark` and `calc` libraries)
   - `musicography`
   - `geometry`
-  - `setspace`
+  - `ebgaramond`
+  - `fancyhdr`
+  - `multicol`
 - **`latexmk`** (included in TeX Live)
 
 Install TeX Live on macOS via [MacTeX](https://tug.org/mactex/).
