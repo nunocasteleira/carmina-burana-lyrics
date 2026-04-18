@@ -33,7 +33,7 @@
 
 - [ ] **Remove or archive commented-out drawing commands** at lines 291–299 (development leftovers).
 - [x] **Add explanatory comment** for verse 4's intentional marker continuation — fixed by adding `\resetmusic` instead.
-- [ ] **Consider `\markword{syl-la-ble}` helper** to pair `\m` markers with text more consistently and reduce scattered `\m` calls.
+- [x] **`\mw{syl-la-ble}` helper** — expl3 macro that splits on `-` and emits `\m` before each syllable; `\markword` is a verbose alias. Applied to all 12 marker-heavy lines. Two edge cases remain explicit: `\m --` (en-dash note) and `\m~` (space note).
 
 ---
 
