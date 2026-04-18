@@ -30,7 +30,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: carmina-burana-lyrics
-          path: main.pdf
+          path: carmina-burana-lyrics.pdf
           if-no-files-found: warn
 
       - name: Publish release
@@ -40,4 +40,4 @@ jobs:
           tag_name: latest
           name: Latest build
           make_latest: true
-          files: main.pdf
+          files: carmina-burana-lyrics.pdf
