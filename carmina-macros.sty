@@ -156,9 +156,12 @@
 \newcommand{\chordstrut}{\vphantom{Ag}}
 \newcommand{\startline}{\chord-{\chordstrut}}
 
-% \songsection{title} — starts a new page then prints a section heading
-% before the song that follows it.
-\newcommand{\songsection}[1]{\newpage\medskip{\large\scshape #1}\medskip\par}
+% \songsection{title} — starts a new page then prints a section heading.
+% \songsection*{title} — prints the heading without a preceding page break.
+\NewDocumentCommand{\songsection}{ s m }{%
+  \IfBooleanF{#1}{\newpage}%
+  \medskip{\large\scshape #2}\medskip\par%
+}
 
 
 % never split across columns or pages.
