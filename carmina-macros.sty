@@ -156,6 +156,17 @@
 \newcommand{\chordstrut}{\vphantom{Ag}}
 \newcommand{\startline}{\chord-{\chordstrut}}
 
+% \keepverse — wraps a verse environment in an unbreakable box so it is
+% never split across columns or pages.
+\newenvironment{keepverse}{%
+  \begin{minipage}{\linewidth}%
+  \begin{verse}%
+}{%
+  \end{verse}%
+  \end{minipage}%
+  \par\medskip%
+}
+
 \newcommand{\muskern}{\kern-.15ex }
 \makeatletter
 \newcommand\dynmark[1]{{\normalfont\bfseries\itshape
