@@ -156,7 +156,11 @@
 \newcommand{\chordstrut}{\vphantom{Ag}}
 \newcommand{\startline}{\chord-{\chordstrut}}
 
-% \keepverse — wraps a verse environment in an unbreakable box so it is
+% \songsection{title} — starts a new page then prints a section heading
+% before the song that follows it.
+\newcommand{\songsection}[1]{\newpage\medskip{\large\scshape #1}\medskip\par}
+
+
 % never split across columns or pages.
 \newenvironment{keepverse}{%
   \begin{minipage}{\linewidth}%
