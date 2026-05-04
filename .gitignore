@@ -32,6 +32,12 @@
 # Output PDF (generated — not source)
 *.pdf
 
+# LilyPond build artifacts
+*.cropped.eps
+*.cropped.pdf
+*.cropped.png
+tmp-ly/
+
 # Editor temp files
 .DS_Store
 *~

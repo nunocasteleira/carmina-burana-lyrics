@@ -4,8 +4,18 @@
 % --- PACKAGES ---
 \RequirePackage[a4paper, margin=2cm]{geometry}
 \RequirePackage[latin]{babel}   % Latin hyphenation patterns
-\RequirePackage{ebgaramond}     % EB Garamond — period-appropriate serif font
-\RequirePackage[T1]{fontenc}
+\RequirePackage{iftex}
+\ifluatex
+  \RequirePackage{fontspec}
+  \setmainfont{EBGaramond-Regular.otf}[
+    BoldFont        = EBGaramond-Bold.otf,
+    ItalicFont      = EBGaramond-Italic.otf,
+    BoldItalicFont  = EBGaramond-BoldItalic.otf,
+  ]
+\else
+  \RequirePackage{ebgaramond}   % EB Garamond — period-appropriate serif font
+  \RequirePackage[T1]{fontenc}
+\fi
 \RequirePackage{fancyhdr}
 \RequirePackage{multicol}
 \RequirePackage{leadsheets}
@@ -18,6 +28,11 @@
 \ExplSyntaxOff
 \RequirePackage{tikz}
 \RequirePackage{graphicx}
+\RequirePackage[
+  quote,
+  staffsize=14,
+  indent=0,
+]{lyluatex}
 % leadsheets defines \meterC; undefine before musicography loads to avoid conflict
 \let\meterC\relax
 \RequirePackage{musicography}
