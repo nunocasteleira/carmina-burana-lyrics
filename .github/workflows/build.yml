@@ -37,7 +37,8 @@ jobs:
         if: always() && github.event_name == 'push'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: latest
-          name: Latest build
+          tag_name: build-${{ github.run_number }}
+          name: Build #${{ github.run_number }}
           make_latest: true
+          generate_release_notes: true
           files: carmina-burana-lyrics.pdf
