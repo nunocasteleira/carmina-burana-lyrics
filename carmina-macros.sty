@@ -159,6 +159,10 @@
   \smash{\llap{\small\IfBooleanTF{#1}{#2}{[#2]}\enspace}}%
 }
 
+% \stanzalabel{X} — prints X (e.g. A, B) further into the left margin than \linenote,
+% so both can appear on the same line without overlap.
+\newcommand{\stanzalabel}[1]{\smash{\llap{\normalfont\small\textit{#1}\kern2.5em}}}
+
 % \scaledegree{N} — prints N̂ (scale degree hat) above the next character, zero width and height
 \newcommand{\scaledegree}[1]{\rlap{\smash{\raisebox{2ex}{\scriptsize$\hat{#1}$}}}}
 
