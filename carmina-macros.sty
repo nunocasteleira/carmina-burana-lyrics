@@ -131,6 +131,13 @@
   \end{tikzpicture}%
 }
 
+% \drawQuarterDotted{mark_num}{height}
+\newcommand{\drawQuarterDotted}[2]{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=center, xshift=3pt, yshift=#2] at (pic cs:v\themusicverse m#1) {\musQuarterDotted};
+  \end{tikzpicture}%
+}
+
 % --- 3. NOTATION HELPERS ---
 
 % Sheet-music style time signatures raised to sit with note markings.
@@ -146,8 +153,11 @@
   \mbox{\kern2pt\vrule width0.5pt height1.5ex depth0.4ex\kern1.5pt\vrule width2.5pt height1.5ex depth0.4ex\kern2pt}%
 }
 
-% \linenote{N} — prints [N] in the left margin without shifting the line text
-\newcommand{\linenote}[1]{\smash{\llap{\small[#1]\enspace}}}
+% \linenote{N}  — prints [N] in the left margin without shifting the line text
+% \linenote*{N} — same but without square brackets
+\NewDocumentCommand{\linenote}{ s m }{%
+  \smash{\llap{\small\IfBooleanTF{#1}{#2}{[#2]}\enspace}}%
+}
 
 % Fermata glyph from the musix font (symbol 80 = fermata up)
 \NewDocumentCommand{\musFermata}{}{\musSymbol{0em}{0.5ex}{0em}{\symbol{80}}}
