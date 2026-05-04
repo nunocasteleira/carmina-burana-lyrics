@@ -170,6 +170,26 @@
 % zero width and height (e.g. \partlabel[1em]{Baritone Solo})
 \NewDocumentCommand{\partlabel}{ O{0pt} m }{\rlap{\smash{\raisebox{1.8ex}{\kern#1\small\textit{#2}}}}}
 
+% \repstart{id} / \repend{id} — mark start and end of a repeated section.
+% Place \repstart just before the first repeated line's text, \repend just after
+% the last repeated line's text (before \\).
+% \drawrep{id}{label} — draw a left-margin bracket spanning the marked section
+% with a label (e.g. {$2\times$}).  Call it after \end{keepverse}.
+\newcommand{\repstart}[1]{\tikzmark{repS-#1}}
+\newcommand{\repend}[1]{\tikzmark{repE-#1}}
+\NewDocumentCommand{\drawrep}{ m m o }{%
+  \begin{tikzpicture}[remember picture, overlay]
+    \coordinate (S) at ($(pic cs:repS-#1)+(-0.8em, 1.3ex)$);
+    \coordinate (E) at ($(pic cs:repE-#1)+(-0.8em, -0.4ex)$);
+    \draw[line width=0.8pt] (S) -- (E);
+    \draw[line width=0.8pt] (S) -- ($(S)+(0.45em,0)$);
+    \draw[line width=0.8pt] (E) -- ($(E)+(0.45em,0)$);
+    \node[anchor=east, font=\footnotesize\itshape] at ($(S)!0.5!(E)+(-0.2em,0)$) {%
+      \IfNoValueTF{#3}{#2}{\shortstack[r]{#2\\{\normalfont#3}}}%
+    };
+  \end{tikzpicture}%
+}
+
 % Fermata glyph from the musix font (symbol 80 = fermata up)
 \NewDocumentCommand{\musFermata}{}{\musSymbol{0em}{0.5ex}{0em}{\symbol{80}}}
 
@@ -189,6 +209,7 @@
 \newenvironment{keepverse}{%
   \begin{minipage}{\linewidth}%
   \begin{verse}%
+  \raggedright% re-apply after verse overrides \rightskip
 }{%
   \end{verse}%
   \end{minipage}%
