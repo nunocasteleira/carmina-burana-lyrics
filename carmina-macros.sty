@@ -166,6 +166,10 @@
 % \scaledegree{N} — prints N̂ (scale degree hat) above the next character, zero width and height
 \newcommand{\scaledegree}[1]{\rlap{\smash{\raisebox{2ex}{\scriptsize$\hat{#1}$}}}}
 
+% \partlabel[nudge]{text} — prints a small italic performance label above the current position,
+% zero width and height (e.g. \partlabel[1em]{Baritone Solo})
+\NewDocumentCommand{\partlabel}{ O{0pt} m }{\rlap{\smash{\raisebox{1.8ex}{\kern#1\small\textit{#2}}}}}
+
 % Fermata glyph from the musix font (symbol 80 = fermata up)
 \NewDocumentCommand{\musFermata}{}{\musSymbol{0em}{0.5ex}{0em}{\symbol{80}}}
 
